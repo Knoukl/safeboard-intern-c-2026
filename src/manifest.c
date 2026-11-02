@@ -87,11 +87,10 @@ static int scan_directory(DIR* directory, const char* full_dir_path,
                           const Options* options) {
     int red_flag = 0;
     int finished = 0;
-    struct dirent* entry = NULL;
 
     while (finished == 0) {
         errno = 0;
-        entry = readdir(directory);
+        const struct dirent* entry = readdir(directory);
 
         if (entry == NULL) {
             if (errno != 0) {
